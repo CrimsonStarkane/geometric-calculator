@@ -1,6 +1,6 @@
 package shapes2d;
 
-import main.App.Function;
+import main.App.FormulaBD;
 import main.App;
 
 import java.io.IOException;
@@ -8,22 +8,31 @@ import java.util.Scanner;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-public class Triangle implements Function {
-    // SHAPE ATTRIBUTES
-    // For perimeter
+public class Triangle {
     private static BigDecimal[] sides = new BigDecimal[3];
-    // For area
     private static BigDecimal base;
     private static BigDecimal height;
-    // For height
     private static BigDecimal area;
 
-    public void solve() throws InterruptedException, IOException {
-        displayMenu();
-        int unit = promptUser();
+    public static void solve() throws InterruptedException, IOException {
+        int unit = App.scan.nextInt(
+            "Enter a choice: ",
+            """
+            What are you solving for?
+            --------------------------
+            0 - Back to Main Menu
+            1 - Perimeter
+            2 - Area
+            3 - Height
+            --------------------------
+            """,
+            0, 3
+        );
 
-        if (unit == 0)
-            return;
+        if (unit == 0) return;
+
+        // if (unit == 1)
+        //     formulas[0].calculate();
 
         BigDecimal result = BigDecimal.ZERO;
         switch (unit) {
@@ -43,47 +52,6 @@ public class Triangle implements Function {
         }
 
         printResult(result);
-    }
-
-    // displayMenu function
-    private static void displayMenu() throws InterruptedException, IOException {
-        App.cls.start().waitFor(); // Clears the screen
-
-        System.out.print(
-            """
-            What are you solving for?
-            --------------------------
-            0 - Back to Main Menu
-            1 - Perimeter
-            2 - Area
-            3 - Height
-            --------------------------
-            """
-        );
-    }
-
-    // prompt user function/method
-    private static int promptUser() throws InterruptedException, IOException {
-        System.out.print("Enter a choice: ");
-
-        int unit = 0;
-        while (true) {
-            if (App.input.hasNextInt()) { // Check if the user inputted an integer
-                unit = App.input.nextInt();
-
-                if (unit >= 0 && unit <= 3) {
-                    App.input = new Scanner(System.in); // Clear the buffer
-                    System.out.println();
-                    break;
-                }
-            }
-
-            App.input = new Scanner(System.in);
-            displayMenu();
-            System.out.print("Invalid input! Enter valid choice: ");
-        }
-
-        return unit;
     }
 
     // Setter functions

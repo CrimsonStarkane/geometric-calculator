@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-// A wrapper class which takes care of error handling with user input
+// A wrapper class which takes care of user input handling
 public class Input {
     Scanner input = new Scanner(System.in);
 
@@ -30,8 +30,10 @@ public class Input {
             if (input.hasNextInt()) {
                 num = input.nextInt();
 
-                if (num >= start && num <= end)
+                if (num >= start && num <= end) {
+                    input.nextLine();
                     return num;
+                }
             }
 
             App.cls.start().waitFor();
@@ -42,7 +44,7 @@ public class Input {
     }
 
     public double nextDouble(String prompt) {
-        System.out.print(prompt);
+        System.out.print("\n" + prompt);
 
         while (true) {
             if (input.hasNextDouble())

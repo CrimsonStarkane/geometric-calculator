@@ -4,6 +4,8 @@ import shapes2d.*;
 import shapes3d.*;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class App {
@@ -15,10 +17,22 @@ public class App {
         public void solve() throws InterruptedException, IOException;
     }
 
-    public static void main(String[] args) throws InterruptedException, IOException {
-        Function[] shapes = {
-            new Circle(), new Square(), new Rectangle(), new Triangle(), new Parallelogram(),
-            new Trapezium(), new Sphere(), new Cube(), new Cuboid(), new Cone(), new Cylinder()
+    public interface FormulaD {
+        public double calculate();
+    }
+
+    public interface FormulaBD {
+        public BigDecimal calculate();
+    }
+
+    public static void main(String[] args) throws Exception {
+        Method[] shapes = {
+            Circle.class.getMethod("solve"), Square.class.getMethod("solve"),
+            Rectangle.class.getMethod("solve"), Triangle.class.getMethod("solve"),
+            Parallelogram.class.getMethod("solve"), Trapezium.class.getMethod("solve"),
+            Sphere.class.getMethod("solve"), Cube.class.getMethod("solve"),
+            Cuboid.class.getMethod("solve"), Cone.class.getMethod("solve"),
+            Cylinder.class.getMethod("solve")
         };
 
         // Main loop (program flow)
@@ -26,7 +40,7 @@ public class App {
             int shape = scan.nextInt(
                 "Enter a choice: ",
                 """
-                Pick a shape
+                            Pick a shape
                 ------------------------------------
                   2D Shapes            3D Shapes
                 ------------------------------------
@@ -45,7 +59,7 @@ public class App {
             if (shape == 0)
                 break;
 
-            shapes[shape - 1].solve();
+            shapes[shape - 1].invoke(null);
         }
     }
 }
