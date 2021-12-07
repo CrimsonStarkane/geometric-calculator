@@ -2,10 +2,6 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
-// interface Formula {
-//     void calculate() throws InterruptedException, IOException;
-// }
-
 public class App {
     public static ProcessBuilder cls = new ProcessBuilder("cmd", "/c", "cls").inheritIO();
     public static double resultD;
@@ -15,7 +11,10 @@ public class App {
         Method[] shapes = {
             Circle.class.getMethod("solve"), Square.class.getMethod("solve"),
             Rectangle.class.getMethod("solve"), Triangle.class.getMethod("solve"),
-            Parallelogram.class.getMethod("solve"), Trapezium.class.getMethod("solve")
+            Parallelogram.class.getMethod("solve"), Trapezium.class.getMethod("solve"),
+            Sphere.class.getMethod("solve"), Cube.class.getMethod("solve"),
+            Cuboid.class.getMethod("solve"), Cone.class.getMethod("solve"),
+            Cylinder.class.getMethod("solve")
         };
 
         // Main loop (program flow)
@@ -46,8 +45,9 @@ public class App {
         }
     }
 
-    public static void printResult(String type) {
-        System.out.println("\nThe answer is " + (type == "Double" ? resultD : resultBD));
+    public static void printResult(String type) throws InterruptedException, IOException {
+        cls.start().waitFor();
+        System.out.println("The answer is " + (type == "Double" ? resultD : resultBD));
         System.out.print("\nPress enter to continue...");
         Input.nextLine();
     }
