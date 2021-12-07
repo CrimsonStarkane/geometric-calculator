@@ -1,43 +1,26 @@
-package main;
-
-import shapes2d.*;
-import shapes3d.*;
-
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.util.Scanner;
+
+// interface Formula {
+//     void calculate() throws InterruptedException, IOException;
+// }
 
 public class App {
     public static ProcessBuilder cls = new ProcessBuilder("cmd", "/c", "cls").inheritIO();
-    public static Scanner input = new Scanner(System.in);
-    public static Input scan = new Input();
-
-    public interface Function {
-        public void solve() throws InterruptedException, IOException;
-    }
-
-    public interface FormulaD {
-        public double calculate();
-    }
-
-    public interface FormulaBD {
-        public BigDecimal calculate();
-    }
+    public static double resultD;
+    public static BigDecimal resultBD;
 
     public static void main(String[] args) throws Exception {
         Method[] shapes = {
             Circle.class.getMethod("solve"), Square.class.getMethod("solve"),
             Rectangle.class.getMethod("solve"), Triangle.class.getMethod("solve"),
-            Parallelogram.class.getMethod("solve"), Trapezium.class.getMethod("solve"),
-            Sphere.class.getMethod("solve"), Cube.class.getMethod("solve"),
-            Cuboid.class.getMethod("solve"), Cone.class.getMethod("solve"),
-            Cylinder.class.getMethod("solve")
+            Parallelogram.class.getMethod("solve"), Trapezium.class.getMethod("solve")
         };
 
         // Main loop (program flow)
         while (true) {
-            int shape = scan.nextInt(
+            int shape = Input.nextInt(
                 "Enter a choice: ",
                 """
                             Pick a shape
@@ -61,5 +44,11 @@ public class App {
 
             shapes[shape - 1].invoke(null);
         }
+    }
+
+    public static void printResult(String type) {
+        System.out.println("\nThe answer is " + (type == "Double" ? resultD : resultBD));
+        System.out.print("\nPress enter to continue...");
+        Input.nextLine();
     }
 }
