@@ -31,6 +31,7 @@ class Sphere {
 
         formulas[unit - 1].run();
         App.printResult("Double");
+        solve();
     }
 }
 
@@ -69,6 +70,7 @@ class Cube {
 
         formulas[unit - 1].run();
         App.printResult("Double");
+        solve();
     }
 }
 
@@ -117,6 +119,7 @@ class Cone {
 
         formulas[unit - 1].run();
         App.printResult("Double");
+        solve();
     }
 }
 

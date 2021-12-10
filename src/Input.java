@@ -6,18 +6,20 @@ import java.util.Scanner;
 public class Input {
     static Scanner input = new Scanner(System.in);
 
+    // Integrates a menu when calling nextInt() and also specifies the range of values that can be accepted
     static int nextInt(String prompt, String menu, int start, int end) throws InterruptedException, IOException {
         App.cls.start().waitFor();
         System.out.print(menu);
         System.out.print(prompt);
 
         int num = 0;
+        // This loop is the main input handler
         while (true) {
             if (input.hasNextInt()) {
                 num = input.nextInt();
 
                 if (num >= start && num <= end) {
-                    input = new Scanner(System.in);
+                    input = new Scanner(System.in); // Clears the input buffer or token (including newlines)
                     return num;
                 }
             }
@@ -29,6 +31,7 @@ public class Input {
         }
     }
 
+    // Standard input handling with no menu, just a prompt message
     static double nextDouble(String prompt) {
         System.out.print(prompt);
 
@@ -59,6 +62,7 @@ public class Input {
         }
     }
 
+    // Simply calls the nextLine() function of the Scanner class
     static void nextLine() {
         input.nextLine();
     }
