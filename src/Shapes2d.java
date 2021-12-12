@@ -129,7 +129,7 @@ class Triangle {
         () -> {
             // Prompts the user for input 3 times and stores it in array 'sides'
             for (int i = 0; i < 3; i++)
-                sides[i] = Input.nextBigDecimal("Enter length of side " + (i + 1));
+                sides[i] = Input.nextBigDecimal("Enter length of side " + (i + 1) + ": ");
 
             // Calculates the sum of all the sides in order to get the PERIMETER
             App.resultBD = BigDecimal.ZERO;
@@ -223,7 +223,42 @@ class Parallelogram {
 }
 
 class Trapezium {
+    private static double baseTop;
+    private static double baseBot;
+    private static double height;
+    private static double area;
+
+    private static Runnable[] formulas = {
+        () -> App.resultD = (baseTop + baseBot) / 2 * height,
+        () -> App.resultD = 2 * area / (baseTop + baseBot),
+        () -> App.resultD = 2 * area / height - baseTop
+    };
+
     public static void solve() throws InterruptedException, IOException {
-        
+        int unit = Input.nextInt(
+            "Enter a choice: ",
+            """
+            What are you solving for?
+            --------------------------
+            0 - Back to Main Menu
+            1 - Area
+            2 - Height
+            3 - Bottom Base
+            --------------------------
+            """,
+            0, 3
+        );
+
+        if (unit == 0) return;
+
+        App.cls.start().waitFor();
+        baseTop = Input.nextDouble("Enter top base: ");
+        if (unit <= 2) baseBot = Input.nextDouble("Enter bottom base: ");
+        if (unit == 1 || unit == 3) height = Input.nextDouble("Enter height: ");
+        if (unit >= 2) area = Input.nextDouble("Enter area: ");
+
+        formulas[unit - 1].run();
+        App.printResult("Double");
+        solve();
     }
 }

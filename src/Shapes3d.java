@@ -75,8 +75,41 @@ class Cube {
 }
 
 class Cuboid {
-    public static void solve() throws InterruptedException, IOException {
+    private static double length;
+    private static double breadth;
+    private static double height;
 
+    private static Runnable[] formulas = {
+        () -> App.resultD = 2 * (length * breadth + breadth * height + height * length),
+        () -> App.resultD = length * breadth * length,
+        () -> App.resultD = Math.sqrt(Math.pow(length, 2) + Math.pow(breadth, 2) + Math.pow(height, 2))
+    };
+
+    public static void solve() throws InterruptedException, IOException {
+        int unit = Input.nextInt(
+            "Enter a choice: ",
+            """
+            What are you solving for?
+            --------------------------
+            0 - Back to Main Menu
+            1 - Surface Area
+            2 - Volume
+            3 - Space Diagonal
+            --------------------------
+            """,
+            0, 3
+        );
+
+        if (unit == 0) return;
+
+        App.cls.start().waitFor();
+        length = Input.nextDouble("Enter length: ");
+        breadth = Input.nextDouble("Enter breadth: ");
+        height = Input.nextDouble("Enter height: ");
+
+        formulas[unit - 1].run();
+        App.printResult("Double");
+        solve();
     }
 }
 
@@ -124,7 +157,44 @@ class Cone {
 }
 
 class Cylinder {
-    public static void solve() throws InterruptedException, IOException {
+    private static double radius;
+    private static double height;
+    private static double volume;
 
+    private static Runnable[] formulas = {
+        () -> App.resultD = 2 * Math.PI * radius * height + 2 * Math.PI * Math.pow(radius, 2),
+        () -> App.resultD = 2 * Math.PI * radius * height,
+        () -> App.resultD = Math.PI * Math.pow(radius, 2) * height,
+        () -> App.resultD = Math.PI * Math.pow(radius, 2),
+        () -> App.resultD = Math.sqrt(volume / (Math.PI * height))
+    };
+
+    public static void solve() throws InterruptedException, IOException {
+        int unit = Input.nextInt(
+            "Enter a choice: ",
+            """
+            What are you solving for?
+            --------------------------
+            0 - Back to Main Menu
+            1 - Total Surface Area
+            2 - Curved Surface Area
+            3 - Volume
+            4 - Base Area
+            5 - Radius
+            --------------------------
+            """,
+            0, 5
+        );
+
+        if (unit == 0) return;
+
+        App.cls.start().waitFor();
+        if (unit == 5) volume = Input.nextDouble("Enter volume: ");
+        else radius = Input.nextDouble("Enter radius: ");
+        if (unit != 4) height = Input.nextDouble("Enter height: ");
+
+        formulas[unit - 1].run();
+        App.printResult("Double");
+        solve();
     }
 }
