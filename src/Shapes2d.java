@@ -31,7 +31,7 @@ class Circle {
         if (unit == 0) return; // Return to main menu if user enters 0
 
         // Enter the dimensions needed for calculation
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         radius = Input.nextDouble("Enter radius: ");
         
         formulas[unit - 1].run();   // Execute the chosen formula
@@ -69,7 +69,7 @@ class Square {
 
         if (unit == 0) return;
 
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         if (unit == 4) area = Input.nextDouble("Enter area: ");
         else side = Input.nextDouble("Enter side length: ");
 
@@ -106,7 +106,7 @@ class Rectangle {
 
         if (unit == 0) return;
 
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         length = Input.nextDouble("Enter length: ");
         width = Input.nextDouble("Enter width: ");
 
@@ -165,7 +165,7 @@ class Triangle {
 
         if (unit == 0) return;
 
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         if (unit >= 2) base = Input.nextDouble("Enter base: ");
         
         formulas[unit - 1].run();
@@ -211,7 +211,7 @@ class Parallelogram {
 
         if (unit == 0) return;
 
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         if (unit <= 3) base = Input.nextDouble("Enter base length: ");
         if (unit >= 3) area = Input.nextDouble("Enter area: ");
         if (unit == 2 || unit == 4) height = Input.nextDouble("Enter height: ");
@@ -251,7 +251,7 @@ class Trapezium {
 
         if (unit == 0) return;
 
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         baseTop = Input.nextDouble("Enter top base: ");
         if (unit <= 2) baseBot = Input.nextDouble("Enter bottom base: ");
         if (unit == 1 || unit == 3) height = Input.nextDouble("Enter height: ");

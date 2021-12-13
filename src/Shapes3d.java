@@ -26,7 +26,7 @@ class Sphere {
 
         if (unit == 0) return;
 
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         radius = Input.nextDouble("Enter radius: ");
 
         formulas[unit - 1].run();
@@ -64,7 +64,7 @@ class Cube {
 
         if (unit == 0) return;
 
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         if (unit <= 3) edge = Input.nextDouble("Enter edge: ");
         else volume = Input.nextDouble("Enter volume: ");
 
@@ -102,7 +102,7 @@ class Cuboid {
 
         if (unit == 0) return;
 
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         length = Input.nextDouble("Enter length: ");
         breadth = Input.nextDouble("Enter breadth: ");
         height = Input.nextDouble("Enter height: ");
@@ -145,7 +145,7 @@ class Cone {
 
         if (unit == 0) return;
 
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         radius = Input.nextDouble("Enter radius: ");
         if (unit <= 2) slantHeight = Input.nextDouble("Enter slant height: ");
         else if (unit == 3 || unit == 4) height = Input.nextDouble("Enter height: ");
@@ -188,7 +188,7 @@ class Cylinder {
 
         if (unit == 0) return;
 
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         if (unit == 5) volume = Input.nextDouble("Enter volume: ");
         else radius = Input.nextDouble("Enter radius: ");
         if (unit != 4) height = Input.nextDouble("Enter height: ");

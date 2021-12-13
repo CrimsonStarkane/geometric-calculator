@@ -8,7 +8,7 @@ public class Input {
 
     // Integrates a menu when calling nextInt() and also specifies the range of values that can be accepted
     static int nextInt(String prompt, String menu, int start, int end) throws InterruptedException, IOException {
-        App.cls.start().waitFor();
+        if (App.os.contains("Windows")) App.cls.start().waitFor();
         System.out.print(menu);
         System.out.print(prompt);
 
@@ -24,7 +24,7 @@ public class Input {
                 }
             }
 
-            App.cls.start().waitFor();
+            if (App.os.contains("Windows")) App.cls.start().waitFor();
             System.out.print(menu);
             System.out.print("Invalid input! " + prompt);
             input = new Scanner(System.in);
@@ -33,7 +33,7 @@ public class Input {
 
     // Standard input handling with no menu, just a prompt message
     static double nextDouble(String prompt) {
-        System.out.print(prompt);
+        System.out.print("\n" + prompt);
 
         while (true) {
             if (input.hasNextDouble()) {
@@ -48,7 +48,7 @@ public class Input {
     }
 
     static BigDecimal nextBigDecimal(String prompt) {
-        System.out.print(prompt);
+        System.out.print("\n" + prompt);
 
         while (true) {
             if (input.hasNextBigDecimal()) {

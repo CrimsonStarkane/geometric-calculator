@@ -3,10 +3,12 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
 public class App {
-    // Used for clearing the screen of the terminal
+    // Used for clearing the screen of the command prompt
     public static ProcessBuilder cls = new ProcessBuilder("cmd", "/c", "cls").inheritIO();
+    // Checks the operating system of the user
+    public static final String os = System.getProperty("os.name");
 
-    // We used 2 result variables to accomodate for both possible data types and for optimization purposes
+    // We used 2 result variables to accommodate for both possible data types and for optimization purposes
     public static double resultD;
     public static BigDecimal resultBD;
 
@@ -51,11 +53,12 @@ public class App {
     }
 
     public static void printResult(String type) throws InterruptedException, IOException {
-        cls.start().waitFor(); // We use the 'cls' object from earlier to clear the console screen
+        // We use the 'cls' object from earlier to clear the console screen if user's OS is Windows
+        if (os.contains("Windows")) cls.start().waitFor();
 
-        System.out.println("The answer is " + (type == "Double" ? resultD : resultBD));
+        System.out.println("The answer is " + (type.equals("Double") ? resultD : resultBD));
         System.out.print("\nPress enter to continue...");
-        
+
         Input.nextLine(); // Pauses the program until the user hits enter
     }
 }
