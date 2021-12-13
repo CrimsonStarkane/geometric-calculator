@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="geometric-calculator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/geometric_calculator_jar</output-path>
+    <root id="archive" name="geometric-calculator.jar">
+      <element id="module-output" name="geometric-calculator" />
+    </root>
+  </artifact>
+</component>

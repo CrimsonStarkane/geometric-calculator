@@ -3,8 +3,12 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
 public class App {
-    // Used for clearing the screen of the command prompt
+    // Clear screen command for Windows
     public static ProcessBuilder cls = new ProcessBuilder("cmd", "/c", "cls").inheritIO();
+
+    // Clear screen command for Unix-based systems
+    public static ProcessBuilder clear = new ProcessBuilder("clear").inheritIO();
+
     // Checks the operating system of the user
     public static final String os = System.getProperty("os.name");
 
@@ -27,7 +31,6 @@ public class App {
         while (true) {
             // Prompt the user
             int shape = Input.nextInt(
-                "Enter a choice: ",
                 """
                             Pick a shape
                 ------------------------------------
@@ -42,7 +45,7 @@ public class App {
                           0 - Exit Program
                 ------------------------------------
                 """,
-                0, 11
+                11
             );
 
             if (shape == 0) break;
@@ -52,13 +55,16 @@ public class App {
         }
     }
 
-    public static void printResult(String type) throws InterruptedException, IOException {
-        // We use the 'cls' object from earlier to clear the console screen if user's OS is Windows
+    public static void clearConsole() throws InterruptedException, IOException {
+        // We use the 'cls' object from earlier to clear the command prompt for Windows OS, otherwise we use 'clear' for Unix-based systems
         if (os.contains("Windows")) cls.start().waitFor();
+        else clear.start().waitFor();
+    }
 
+    public static void printResult(String type) throws InterruptedException, IOException {
+        clearConsole();
         System.out.println("The answer is " + (type.equals("Double") ? resultD : resultBD));
         System.out.print("\nPress enter to continue...");
-
         Input.nextLine(); // Pauses the program until the user hits enter
     }
 }

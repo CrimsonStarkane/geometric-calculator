@@ -6,39 +6,40 @@ import java.util.Scanner;
 public class Input {
     static Scanner input = new Scanner(System.in);
 
-    // Integrates a menu when calling nextInt() and also specifies the range of values that can be accepted
-    static int nextInt(String prompt, String menu, int start, int end) throws InterruptedException, IOException {
-        if (App.os.contains("Windows")) App.cls.start().waitFor();
+    // Integrates a menu when calling nextInt() and also specifies the maximum value that can be accepted starting from 0
+    static int nextInt(String menu, int end) throws InterruptedException, IOException {
+        App.clearConsole();
         System.out.print(menu);
-        System.out.print(prompt);
+        System.out.print("Enter a choice: ");
 
-        int num = 0;
+        int num;
         // This loop is the main input handler
         while (true) {
             if (input.hasNextInt()) {
                 num = input.nextInt();
 
-                if (num >= start && num <= end) {
+                if (num >= 0 && num <= end) {
                     input = new Scanner(System.in); // Clears the input buffer or token (including newlines)
                     return num;
                 }
             }
 
-            if (App.os.contains("Windows")) App.cls.start().waitFor();
+            App.clearConsole();
             System.out.print(menu);
-            System.out.print("Invalid input! " + prompt);
+            System.out.print("Invalid input! " + "Enter a choice: ");
             input = new Scanner(System.in);
         }
     }
 
     // Standard input handling with no menu, just a prompt message
     static double nextDouble(String prompt) {
-        System.out.print("\n" + prompt);
+        System.out.print(prompt);
 
         while (true) {
             if (input.hasNextDouble()) {
                 double num = input.nextDouble();
                 input = new Scanner(System.in);
+                System.out.println();
                 return num;
             }
 
@@ -48,12 +49,13 @@ public class Input {
     }
 
     static BigDecimal nextBigDecimal(String prompt) {
-        System.out.print("\n" + prompt);
+        System.out.print(prompt);
 
         while (true) {
             if (input.hasNextBigDecimal()) {
                 BigDecimal num = input.nextBigDecimal();
                 input = new Scanner(System.in);
+                System.out.println();
                 return num;
             }
 

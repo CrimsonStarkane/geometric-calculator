@@ -3,7 +3,7 @@ import java.io.IOException;
 class Sphere {
     private static double radius;
 
-    private static Runnable[] formulas = {
+    private static final Runnable[] formulas = {
         () -> App.resultD = 4 * Math.PI * Math.pow(radius, 2),
         () -> App.resultD = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3),
         () -> App.resultD = 2 * radius
@@ -11,8 +11,7 @@ class Sphere {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-            "Enter a choice: ",
-            """
+                """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -21,12 +20,12 @@ class Sphere {
             3 - Diameter
             --------------------------
             """,
-            0, 3
+                3
         );
 
         if (unit == 0) return;
 
-        if (App.os.contains("Windows")) App.cls.start().waitFor();
+        App.clearConsole();
         radius = Input.nextDouble("Enter radius: ");
 
         formulas[unit - 1].run();
@@ -39,7 +38,7 @@ class Cube {
     private static double edge;
     private static double volume;
 
-    private static Runnable[] formulas = {
+    private static final Runnable[] formulas = {
         () -> App.resultD = 6 * Math.pow(edge, 2),
         () -> App.resultD = Math.pow(edge, 3),
         () -> App.resultD = edge * Math.sqrt(3),
@@ -48,8 +47,7 @@ class Cube {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-            "Enter a choice: ",
-            """
+                """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -59,12 +57,12 @@ class Cube {
             4 - Edge
             --------------------------
             """,
-            0, 4
+                4
         );
 
         if (unit == 0) return;
 
-        if (App.os.contains("Windows")) App.cls.start().waitFor();
+        App.clearConsole();
         if (unit <= 3) edge = Input.nextDouble("Enter edge: ");
         else volume = Input.nextDouble("Enter volume: ");
 
@@ -79,7 +77,7 @@ class Cuboid {
     private static double breadth;
     private static double height;
 
-    private static Runnable[] formulas = {
+    private static final Runnable[] formulas = {
         () -> App.resultD = 2 * (length * breadth + breadth * height + height * length),
         () -> App.resultD = length * breadth * length,
         () -> App.resultD = Math.sqrt(Math.pow(length, 2) + Math.pow(breadth, 2) + Math.pow(height, 2))
@@ -87,8 +85,7 @@ class Cuboid {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-            "Enter a choice: ",
-            """
+                """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -97,12 +94,12 @@ class Cuboid {
             3 - Space Diagonal
             --------------------------
             """,
-            0, 3
+                3
         );
 
         if (unit == 0) return;
 
-        if (App.os.contains("Windows")) App.cls.start().waitFor();
+        App.clearConsole();
         length = Input.nextDouble("Enter length: ");
         breadth = Input.nextDouble("Enter breadth: ");
         height = Input.nextDouble("Enter height: ");
@@ -118,7 +115,7 @@ class Cone {
     private static double radius;
     private static double height;
 
-    private static Runnable[] formulas = {
+    private static final Runnable[] formulas = {
         () -> App.resultD = Math.PI * radius * (radius + slantHeight),
         () -> App.resultD = Math.PI * radius * slantHeight,
         () -> App.resultD = (1.0 / 3.0) * Math.PI * Math.pow(radius, 2) * height,
@@ -128,8 +125,7 @@ class Cone {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-            "Enter a choice: ",
-            """
+                """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -140,12 +136,12 @@ class Cone {
             5 - Base Area
             --------------------------
             """,
-            0, 5
+                5
         );
 
         if (unit == 0) return;
 
-        if (App.os.contains("Windows")) App.cls.start().waitFor();
+        App.clearConsole();
         radius = Input.nextDouble("Enter radius: ");
         if (unit <= 2) slantHeight = Input.nextDouble("Enter slant height: ");
         else if (unit == 3 || unit == 4) height = Input.nextDouble("Enter height: ");
@@ -161,7 +157,7 @@ class Cylinder {
     private static double height;
     private static double volume;
 
-    private static Runnable[] formulas = {
+    private static final Runnable[] formulas = {
         () -> App.resultD = 2 * Math.PI * radius * height + 2 * Math.PI * Math.pow(radius, 2),
         () -> App.resultD = 2 * Math.PI * radius * height,
         () -> App.resultD = Math.PI * Math.pow(radius, 2) * height,
@@ -171,8 +167,7 @@ class Cylinder {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-            "Enter a choice: ",
-            """
+                """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -183,12 +178,12 @@ class Cylinder {
             5 - Radius
             --------------------------
             """,
-            0, 5
+                5
         );
 
         if (unit == 0) return;
 
-        if (App.os.contains("Windows")) App.cls.start().waitFor();
+        App.clearConsole();
         if (unit == 5) volume = Input.nextDouble("Enter volume: ");
         else radius = Input.nextDouble("Enter radius: ");
         if (unit != 4) height = Input.nextDouble("Enter height: ");
