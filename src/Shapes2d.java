@@ -15,7 +15,7 @@ class Circle {
     // The exception classes handles the exceptions to the ProcessBuilder
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -24,7 +24,7 @@ class Circle {
             3 - Diameter
             --------------------------
             """,
-                3
+            3
         );
 
         if (unit == 0) return; // Return to main menu if user enters 0
@@ -52,7 +52,7 @@ class Square {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -62,7 +62,7 @@ class Square {
             4 - Side
             --------------------------
             """,
-                4
+            4
         );
 
         if (unit == 0) return;
@@ -89,7 +89,7 @@ class Rectangle {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -98,7 +98,7 @@ class Rectangle {
             3 - Diagonal
             --------------------------
             """,
-                3
+            3
         );
 
         if (unit == 0) return;
@@ -147,7 +147,7 @@ class Triangle {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -156,7 +156,7 @@ class Triangle {
             3 - Height
             --------------------------
             """,
-                3
+            3
         );
 
         if (unit == 0) return;
@@ -191,7 +191,7 @@ class Parallelogram {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -201,7 +201,7 @@ class Parallelogram {
             4 - Base
             --------------------------
             """,
-                4
+            4
         );
 
         if (unit == 0) return;
@@ -231,7 +231,7 @@ class Trapezium {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -240,7 +240,7 @@ class Trapezium {
             3 - Bottom Base
             --------------------------
             """,
-                3
+            3
         );
 
         if (unit == 0) return;

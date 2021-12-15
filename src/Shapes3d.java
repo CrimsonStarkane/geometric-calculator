@@ -11,7 +11,7 @@ class Sphere {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -20,7 +20,7 @@ class Sphere {
             3 - Diameter
             --------------------------
             """,
-                3
+            3
         );
 
         if (unit == 0) return;
@@ -47,7 +47,7 @@ class Cube {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -57,7 +57,7 @@ class Cube {
             4 - Edge
             --------------------------
             """,
-                4
+            4
         );
 
         if (unit == 0) return;
@@ -85,7 +85,7 @@ class Cuboid {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -94,7 +94,7 @@ class Cuboid {
             3 - Space Diagonal
             --------------------------
             """,
-                3
+            3
         );
 
         if (unit == 0) return;
@@ -125,7 +125,7 @@ class Cone {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -136,7 +136,7 @@ class Cone {
             5 - Base Area
             --------------------------
             """,
-                5
+            5
         );
 
         if (unit == 0) return;
@@ -167,7 +167,7 @@ class Cylinder {
 
     public static void solve() throws InterruptedException, IOException {
         int unit = Input.nextInt(
-                """
+            """
             What are you solving for?
             --------------------------
             0 - Back to Main Menu
@@ -178,7 +178,7 @@ class Cylinder {
             5 - Radius
             --------------------------
             """,
-                5
+            5
         );
 
         if (unit == 0) return;

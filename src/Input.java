@@ -26,7 +26,7 @@ public class Input {
 
             App.clearConsole();
             System.out.print(menu);
-            System.out.print("Invalid input! " + "Enter a choice: ");
+            System.out.print("Invalid input! Enter a choice: ");
             input = new Scanner(System.in);
         }
     }
