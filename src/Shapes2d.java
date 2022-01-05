@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 class Circle {
-    // Declare shape dimensions
+    // Declare shape dimension
     private static double radius;
 
     // Stores the formulas in an array
@@ -29,7 +29,7 @@ class Circle {
 
         if (unit == 0) return; // Return to main menu if user enters 0
 
-        // Enter the dimensions needed for calculation
+        // Enter the dimension needed for calculation
         App.clearConsole();
         radius = Input.nextDouble("Enter radius: ");
         

@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class App {
     // Clear screen command for Windows
@@ -61,9 +62,13 @@ public class App {
         else clear.start().waitFor();
     }
 
+    private static String round(double value) {
+        return BigDecimal.valueOf(value).setScale(3, RoundingMode.HALF_UP).toPlainString();
+    }
+
     public static void printResult(String type) throws InterruptedException, IOException {
         clearConsole();
-        System.out.println("The answer is " + (type.equals("Double") ? resultD : resultBD));
+        System.out.println("The answer is " + (type.equals("Double") ? round(resultD) : resultBD.setScale(3, RoundingMode.HALF_UP)));
         System.out.print("\nPress enter to continue...");
         Input.nextLine(); // Pauses the program until the user hits enter
     }

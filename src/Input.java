@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Input {
     static Scanner input = new Scanner(System.in);
 
-    // Integrates a menu when calling nextInt() and also specifies the maximum value that can be accepted starting from 0
-    static int nextInt(String menu, int end) throws InterruptedException, IOException {
+    // Integrates a menu when calling nextInt() and also specifies the maximum value that can be accepted starting from 0'
+    static int nextInt(String menu, int end) throws IOException, InterruptedException {
         App.clearConsole();
         System.out.print(menu);
         System.out.print("Enter a choice: ");
@@ -40,7 +40,8 @@ public class Input {
                 double num = input.nextDouble();
                 input = new Scanner(System.in);
                 System.out.println();
-                return num;
+
+                if (num > 0) return num;
             }
 
             System.out.print("Invalid input! " + prompt);
@@ -56,7 +57,8 @@ public class Input {
                 BigDecimal num = input.nextBigDecimal();
                 input = new Scanner(System.in);
                 System.out.println();
-                return num;
+
+                if (num.compareTo(BigDecimal.ZERO) == 1) return num;
             }
 
             System.out.print("Invalid input! " + prompt);
